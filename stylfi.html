@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,
+                               maximum-scale=1.0,user-scalable=no" />
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<style>
+.navbar-fixed-bottom
+{
+display: none !important
+}
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: initial;
+}
+
+
+
+	/* flip the pane when hovered 
+	.flip-container:hover .flipper, .flip-container.hover .flipper */
+	.flip-active
+	{
+  -webkit-transform: rotateY(-180deg);
+           -moz-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+             -o-transform: rotateY(-180deg);
+                transform: rotateY(-180deg); 	}
+
+.flip-container, .front, .back {
+	width: 100%;
+	height: 100%;
+}
+
+/* flip speed goes here */
+.flipper {
+    -webkit-transition: -webkit-transform 1.5s;
+           -moz-transition: -moz-transform 1.5s;
+            -ms-transition: -moz-transform 1.5s;
+             -o-transition: -moz-transform 1.5s;
+                transition: -moz-transform 1.5s;
+                
+        -webkit-transform-style: preserve-3d;
+           -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+             -o-transform-style: preserve-3d;
+                transform-style: preserve-3d;  
+height: 100%;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+ -webkit-backface-visibility: hidden;
+           -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+             -o-backface-visibility: hidden;
+                backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+           -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+             -o-transform: rotateY(180deg);
+                transform: rotateY(180deg); 	
+}
+
+</style>  
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/malupit.css">
+</head>
+<body>
+<div class="none stylfi_header" style="width: 100%;text-align: center;padding-top: .5rem;
+padding-bottom:15px">
+
+<button id="toggle" style="display:block !important" data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+
+<div class="futura title active_tab"> Set up your style
+</div>
+<!--
+<img src="img/stylfi/biglogo.png"  style="margin: auto;
+width: 35%;
+min-width: 85px;"/>
+-->
+<img class="ron_btn" id="toggle2" src="img/stylfi/logout.png" />
+</div>
+
+<div class="none toggle_menu">
+	<p id="suggest">SUGGESTIONS</p>
+	<hr/>
+	<p id="mash">STYLES</p>
+	<hr/>
+	<p id="favorite">FAVORITES</p>
+	<hr/>
+	<p  id="inspiration">INSPIRATION</p>	<hr/>
+		<p  id="profile">PROFILE</p>
+
+</div>
+
+
+
+<div class="none toggle_menu2">
+	<p id="lout">LOGOUT</p>
+	<hr/>
+	<p id="reset">RESET</p>
+	
+</div>
+<div class="gender_div none toggle_div" style="overflow: auto;height:auto">
+
+<div class="futura title pad_top_1rem"  style="font-size: 3rem;
+font-weight: normal;
+padding-top: .5rem;">
+
+</div>
+<div class="ron_row pad_top_3rem">
+<div class="male" style="width: 48%;
+float: left;
+margin: 1%;
+text-align: center;">
+<img src="img/stylfi/women.png"  style="margin: auto;
+max-width: 100%;
+width: 83%;"/>
+<br/>
+
+</div>
+
+
+<div  class="female" style="width: 48%;
+float: left;
+margin: 1%;
+text-align: center;">
+<img src="img/stylfi/men.png"  style="margin: auto;
+max-width: 100%;
+width: 70%;"/>
+<br/>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div  class="ron_row" >
+<div class="stylefi male" style="width: 48%;
+float: left;
+margin: 1%;
+text-align: center;">
+
+Male
+</div>
+
+<div class="stylefi female" style="width: 48%;
+
+float: left;
+margin: 1%;
+text-align: center;">
+
+Female
+</div>
+
+
+
+
+</div>
+
+
+<div class="ron_row">
+<div class="stylefi care text-center ">
+I go both ways
+</div>
+
+</div>
+</div>
+<div class="suggestion_div none toggle_div" style="overflow: auto;height:auto">
+
+</div>
+
+<div class="profile_div none toggle_div" style="overflow: auto;height:auto">
+	
+</div>
+<div class="logo_div " >
+	<div class="col-md-8 pad_b col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-1 col-lg-4 col-lg-offset-4">
+
+		<img   style="width: 50%;margin: auto;margin-bottom:0px;margin-top:10%" src="img/stylfi/biglogo.png" />
+	</div>
+
+
+	<div class="pad_b col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-1 col-lg-4 col-lg-offset-4">
+		<button id="log_in" class="black_btn"> LOG IN</button>
+	</div>
+	<div class="pad_b col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-1 col-lg-4 col-lg-offset-4">
+		<button id="reg_in"  class="black_btn"> REGISTER</button>
+	</div>
+
+
+	<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-1 col-lg-4 col-lg-offset-4">
+
+		<button id="stylfi_login"  class="black_btn">FACEBOOK CONNECT</button>
+	</div>
+</div>
+<div class="login_div none toggle_div" style="overflow: auto;height:auto">
+<div class="" style="margin-top:30px">
+<div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-default">
+	<form id="log_form">
+
+  <div class="panel-heading"><h3 class="panel-title">LOG IN </h3></div>
+  <div class="panel-body">
+  <div class="form-group">
+    <input type="email" class="form-control" style="border-radius:0px" id="log_email" required placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" style="border-radius:0px" id="log_password" required placeholder="Password">
+  </div>
+  <button type="submit" class="black_btn mar_b">LOG IN</button>
+   <a href="#" class="black_btn cancel_log">CANCEL</a>
+
+  </div>
+  </form>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="reg_div none toggle_div" style="overflow: auto;height:auto">
+<div class="" style="margin-top:30px">
+<div class="col-md-4 col-md-offset-4">
+<form id="reg_form">
+    <div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">REGISTER </h3></div>
+  <div class="panel-body">
+  <div class="form-group">
+    <input required type="email" class="form-control" style="border-radius:0px" id="reg_email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <input required type="password" class="form-control" style="border-radius:0px" id="reg_password" placeholder="Password">
+  </div>
+   <div class="form-group">
+    <input required type="password" class="form-control" style="border-radius:0px" id="reg_password1" placeholder="Confirm Password">
+  </div>
+  <button type="submit" class="black_btn mar_b">REGISTER</button>
+   <a href="#" class="black_btn cancel_reg">CANCEL</a>
+
+  </div>
+</div>
+</div>
+</form>
+</div>
+
+</div>
+
+<div class="inspiration_div none toggle_div" style="overflow: auto;height:auto">
+
+</div>
+
+<div id="myfav1" class="favorite_div none toggle_div" style="overflow: auto;height:auto">
+
+</div>
+
+<div class="choose_gender none">
+
+
+
+
+<div id="master_ron" class="toggle_div">
+<div class="futura title pad_top_1rem"  style="font-size: 3rem;
+font-weight: normal;
+padding-top: .5rem;">
+
+</div>
+<div class="ron_row pad_top_3rem">
+<div class="male" style="width: 48%;
+float: left;
+margin: 1%;
+text-align: center;">
+<img src="img/stylfi/women.png"  style="margin: auto;
+max-width: 100%;
+width: 83%;"/>
+<br/>
+
+</div>
+
+
+<div  class="female" style="width: 48%;
+float: left;
+margin: 1%;
+text-align: center;">
+<img src="img/stylfi/men.png"  style="margin: auto;
+max-width: 100%;
+width: 70%;"/>
+<br/>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div  class="ron_row" >
+<div class="stylefi male" style="width: 48%;
+float: left;
+margin: 1%;
+text-align: center;">
+
+Male
+</div>
+
+<div class="stylefi female" style="width: 48%;
+
+float: left;
+margin: 1%;
+text-align: center;">
+
+Female
+</div>
+
+
+
+
+</div>
+
+
+<div class="ron_row">
+<div class="stylefi care text-center ">
+I go both ways
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="popup skim_pop" style="opacity: .8;top:2rem">
+
+</div>
+
+
+<div  class="ron_row none arena_parent toggle_div" >
+	<div class="flip-container"  > 
+		<div class="flipper">
+		<div  class="arena front">
+
+
+		</div>
+		<div  class="arena back">
+
+
+		</div>
+		</div>
+		
+	</div>
+
+
+<div class="ron_row text-center">
+<!--
+<div style="width: 40%;
+float: left;
+text-align: right;">
+<img  class="ron_btn winner_left stylfi_button" style="width:35%;opacity:.7"src="img/stylfi/add_favourite.png" />
+</div>
+
+<div style="float: left;width: 20%;text-align: center" >
+-->
+<p class="futura title ron_btn skip_button none" style="font-size:3rem"> Skip >></p>
+
+<!--
+
+</div>
+
+<div style="width: 40%;
+float: left;
+text-align: left;">
+<img class="ron_btn winner_right stylfi_button" style="width:35%;opacity:.7" src="img/stylfi/add_favourite.png" />
+</div>
+-->
+</div>
+
+
+</div>
+
+
+
+<div id="popup">
+                        
+		<div class="pop_holder">
+						<img  class="loader" src="img/loader.gif" />
+<div id="popup_image">
+<img  class="popup  center big_img2" src="" style="top: 0px" />
+</div>
+<div id="pop_con">
+<div style="margin-top: -6rem;width: 100%;background: #f5f5f5;height: 5rem;overflow: hidden">
+	<div style="width: 33.33%;float: left;font-size: 2.4rem;
+vertical-align: middle;padding-left: 3%;
+box-sizing: border-box;
+display: table; "><label id="count_likes">0</label>
+	<img  style="width:40%" src="img/stylfi/heart.png" />
+
+
+	</div>
+	
+	<div style="text-align: center;width: 33.33%;float: left;font-size: 2.4rem;
+vertical-align: middle;padding-left: 3%;
+box-sizing: border-box;
+display: table; "><label id="count_comments"> 0</label>
+<img  style="width:40%" src="img/stylfi/comment.png" />
+
+
+</div>
+<div style="width: 33.33%;float: left; text-align: center ">
+<img  id="share_look" data-image="" style="width:40%" src="img/stylfi/share.png" />
+
+
+</div>
+
+</div>
+
+<!--user-->
+ <div style="width: 90% ;margin: auto;padding-top:1.5rem;overflow: hidden">
+ <div style="width: 100%;overflow: hidden">
+ <div class="circle_thumb" style="float: left">
+ <img id="pop_thumb" class="feed_user" src="" />
+ </div>
+ <div style="float: left">
+ <span id="pop_name" class="title" style="font-size: 2.5rem;
+padding-left: 1rem;"></span><br/>
+<span id="pop_date" class="title" style="font-size: 2rem;
+padding-left: 1rem;">
+
+</span>
+ </div>
+ </div>
+ 
+ <div id="pop_desc" style="padding-top:1rem;width:100%;font-size: 2rem;padding-bottom: 2rem" class="title">
+ 
+ 
+ </div>
+ <div  style="width: 100%;padding-bottom: 2rem;overflow: hidden">
+ <div id="comment_section">
+ 
+ 
+ 
+ </div>
+ <input id="comment_box" placeholder="Leave a comment" type="text" style="width: 81% !Important;
+border-radius: 9px !important;
+background: #dadada;
+border: none;
+font-size: 2rem;
+padding: 5px;" />
+ </div>
+ </div>
+</div>
+
+						<!--<img id="tag_btn"  src="img/tagger.png" /> -->
+
+</div>
+<div>
+<img id="sharer" src="img/crown.png" />
+</div>
+
+
+</div>
+
+<div id="arena1" class="hide">
+
+</div>
+<div id="arena2" class="hide">
+
+</div>
+
+<div id="arena3" class="hide">
+</div>
+<script type="text/javascript" src="phonegap.js"></script>
+
+
+  <script src="cdv-plugin-fb-connect.js"></script>
+            <!-- facebook js sdk -->
+                <script src="facebook-js-sdk.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/mustache.js"></script>
+
+<script src="js/jquery.tap.min.js"></script>
+<script src="js/ui.js"></script>
+
+
+<script src="js/enhance.js"></script>
+<script src="js/lazy.js"></script>
+
+<script src="js/face.js"></script>
+
+<script src="js/index.js"></script>
+
+<script src="js/stylfi.js"></script>
+
+
+<div id="pop">
+
+</div>
+</body>
+
+</html>

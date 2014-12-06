@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+    "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="css/malupit.css">
+</head>
+
+
+<body>
+<div class="triangle none">
+<div class="s_back" style="width: 100%;height: 4rem">
+<img class="pull-left pop_back hov " src="img/upback.png">
+</div>
+<input id="s_tag" type="text"  placeholder="Search for hashtags">
+
+<div id="submit_search" class="hov" ><span> Search</span></div>
+</div>
+
+<div class="triangle_hof none">
+<img class="pull-left pop_back hov s_back" src="img/upback.png">
+<input id="s_tag_hof" type="text"  placeholder="Search for hashtags">
+
+<div id="submit_search_hof" class="hov" ><span> Search</span></div>
+</div>
+
+<div id="hidden_profile" class="hidden" ></div>
+<div id="hidden_looks" class="hidden" ></div>
+<div id="hidden_activity" class="hidden" ></div>
+<div id="hidden_following" class="hidden" ></div>
+<div id="hidden_follow" class="hidden" ></div>
+
+
+<div id="tofollow_div">
+
+<hr/>
+
+</div>
+
+<div id="settings_div">
+<div style="padding-bottom: 6rem;" id="set_back"> <img  style="width: 100%" src="img/settings.jpg" /> </div>
+
+<hr/>
+<p><h1 id="logout"> Logout</h1></p>
+<hr/>
+<p><h1 id="tofollow"> Find new people to follow</h1></p>
+<hr/>
+
+</div>
+
+ 
+
+	
+<!-- uoload popup -->
+<div class=" uppop popup" style="width: 100%;display: none">
+<img class="upback" src="img/upback.png" />
+<p>Pick a Source</p>
+<img class="ico" src="img/gallery.png" onclick="" /> 
+ <img class="ico" src="img/camera.png" onclick="takePicture();" /> 
+  
+  
+</div>
+
+<div class="popup upcrop">
+<div class="crop_head"> Move and Scale <img id="next" src="img/next.png" /></div>
+
+              <div id="parent_canvas" style="margin: auto;border: dashed 2px;width:100%;height: 100%;background: white"> 
+        <canvas id="mycanvas"  style="width:100%;height:100%"></canvas>
+		
+
+    </div>         
+                   
+</div>
+
+<div id="uploading" class="popup" style="display: none;width: 100%;height: 100%; background: white;position;absolute;z-index: 9999999">
+
+<img class="loader" src="img/loader.gif">
+</div>
+<div class="popup updetails">
+<div class="crop_head">Edit Details <img id="updone" src="img/updone.png" /></div>
+
+<div class="div"><span class="upred"> Description</span> <span class="upgray"> Describe or name your look </span> </div>
+<div class="div"><textarea  id="desc_up" rows=8 class="full_area"></textarea> </div>
+
+
+
+
+</div>
+
+		
+		<!-- popup tags -->
+		<!-- begin pop up tags -->
+ <div style="height:10rem;z-index: 10000" class="popup tag_pop like_modal col-xs-12" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="tag_content">
+   <div id="tag_me">
+   
+   
+   </div>
+    <div class="row"> <!-- profgile photo -->
+	
+	  <div class="col-xs-3 top_arena">  	
+<div class="circle_thumb arena_top_thumb"><img class="img-responsive fb_photo " src=""  data-name="" /></div></div>
+	  
+	  	
+		<div class="col-xs-7 top_arena_right">
+		  <p class="pink username " ></p>
+		  		 <!-- <p class="pdate" > <small class="gray">October 2, 2013 </small></p> -->
+				  <p class="item_desc" ><p>
+
+		  </div>
+		  
+		  <div class='modal-body'  >
+<div id='add_tag'>
+				<textarea class='textarea' placeholder='Describe the look to gain points' ></textarea>
+
+			</div>
+			 </div>
+			 <div class='tops' style="margin-left: 5rem">
+			
+
+			
+
+			</div>
+	  <img class="pull-left pop_back hov tag_back" src="img/upback.png" />
+
+		 <a  href=#  class='confirm'  data-dismiss='modal'><img class='hov confirm_button' src='img/confirm.png' /></a>
+
+	  </div>
+	  
+	  <!--desc -->
+	  <div class="row  ">
+	  	<div class="col-xs-3 " ></div>  	  <div class="col-xs-9 black nega">
+		
+</div>
+	  </div>
+	  
+	  <!-- tagger -->
+	  
+	  <div id="tagger">
+		  
+		  
+		  </div>
+	  
+	  
+	  
+   </div>
+	   </div>
+<div id="pop"></div>
+
+
+<div id="master">
+
+
+				
+</div>
+
+
+<img class='loader' src='img/loader.gif' />
+		
+
+		
+
+		
+<!--looks popup-->
+<div id="popup">
+                        
+		<div class="pop_holder">
+						<img  class="loader" src="img/loader.gif" />
+<div id="popup_image">
+<img  class="popup  center big_img2" src="" style="top: 0px" />
+</div>
+<div id="pop_con">
+
+</div>
+
+						<img id="tag_btn"  src="img/tagger.png" />
+
+</div>
+<div>
+<img id="sharer" src="img/crown.png" />
+</div>
+
+
+</div>
+<div id="fb_load">
+<img class="loader" src="img/loader.gif">
+
+</div>
+
+<div class="popup skim_pop">
+
+</div>
+
+<script type="text/javascript" src="phonegap.js"></script>
+
+
+  <script src="cdv-plugin-fb-connect.js"></script>
+            <!-- facebook js sdk -->
+                <script src="facebook-js-sdk.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/mustache.js"></script>
+
+<script src="js/iscroll.js"></script>
+<script src="js/jquery.tap.min.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/enhance.js"></script>
+<script src="js/lazy.js"></script>
+
+
+<script src="js/index.js"></script>
+
+</body>
+
+</html>

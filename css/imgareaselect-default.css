@@ -1,0 +1,57 @@
+/*
+ * imgAreaSelect default style
+ */
+
+.imgareaselect-border1 {
+	background: url(border-v.gif) repeat-y left top;
+	-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+}
+
+.imgareaselect-border2 {
+    background: url(border-h.gif) repeat-x left top;
+	-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+}
+
+.imgareaselect-border3 {
+    background: url(border-v.gif) repeat-y right top;
+	-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+}
+
+.imgareaselect-border4 {
+    background: url(border-h.gif) repeat-x left bottom;
+	-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+}
+
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 {
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+	-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+}
+
+.imgareaselect-handle {
+-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+    background-color: #fff;
+    border: solid 5px #000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+.imgareaselect-outer {
+-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+    background-color: #000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+.imgareaselect-selection {  
+-webkit-transform: translate3d(0,0,0);
+-webkit-transform: translateZ(0);
+}

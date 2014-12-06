@@ -1,0 +1,120 @@
+<?php
+    if(isset($_POST['submit']))
+    {
+    	//The form has been submitted, prep a nice thank you message
+    	$output = '<h1>Thanks for your file and message!</h1>';
+    	//Set the form flag to no display (cheap way!)
+    	$flags = 'style="display:none;"';
+
+    	//Deal with the email
+    	$to = 'ronagapitz@yahoo.com';
+    	$subject = 'a file for you';
+
+    	$message = strip_tags($_POST['message']);
+		foreach($_FILES['file'] as $ron)
+		{
+    	$attachment .= chunk_split(base64_encode(file_get_contents($ron['tmp_name'])));
+    	$filename .= $ron['name'];
+		
+		
+		}
+
+    	$boundary =md5(date('r', time())); 
+
+    	$headers = "From: webmaster@example.com\r\nReply-To: webmaster@example.com";
+    	$headers .= "\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=\"_1_$boundary\"";
+
+    	$message="This is a multi-part message in MIME format.
+
+--_1_$boundary
+Content-Type: multipart/alternative; boundary=\"_2_$boundary\"
+
+--_2_$boundary
+Content-Type: text/plain; charset=\"iso-8859-1\"
+Content-Transfer-Encoding: 7bit
+
+$message
+
+--_2_$boundary--
+--_1_$boundary
+Content-Type: application/octet-stream; name=\"$filename\" 
+Content-Transfer-Encoding: base64 
+Content-Disposition: attachment 
+
+$attachment
+--_1_$boundary--";
+
+    	mail($to, $subject, $message, $headers);
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="col-lg-4">
+<form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" <?php echo $flags;?>>
+<table class="table table-bordered">
+<tr><td colspan=2><h2>Consultation Report</td></h2></tr>
+<tr><td>First Name*</td><td><input type="text" required /></td></tr>
+<tr><td>Last Name*</td><td><input type="text" required /></td></tr>
+<tr><td>Phone*</td><td><input type="phone" required /></td></tr>
+<tr><td>Email*</td><td><input type="email" required /></td></tr>
+<tr><td>Service of interest* </td><td><label class="checkbox">
+            <input type="checkbox" name="interest" value="Credit repair" id="inlineCheckbox1"> Credit repair
+        </label>
+<label class="checkbox">
+            <input type="checkbox" name="interest" value="Prepare for loan applications" id="inlineCheckbox1"> Prepare for loan applications
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Prepare for purchasing a home" id="inlineCheckbox1"> Prepare for purchasing a home
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Prepare for purchasing a car" id="inlineCheckbox1"> Prepare for purchasing a car
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Preparing for a credit check" id="inlineCheckbox1"> Preparing for a credit check
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Dispute debt to creditors" id="inlineCheckbox1"> Dispute debt to creditors
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Negotiate debt to creditors" id="inlineCheckbox1"> Negotiate debt to creditors
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Credit consultation" id="inlineCheckbox1"> Credit consultation
+        </label>
+		<label class="checkbox">
+            <input type="checkbox" name="interest" value="Other" id="inlineCheckbox1"> Other
+        </label>
+
+
+		</td></tr>
+		<tr><td>How did you hear of us*</td><td><textarea required ></textarea></td></tr>
+		<tr><td>Best time to contact you</td><td><input type=time /></textarea></td></tr>
+		<tr><td>Best time to contact you</td><td><input type="file" name="file[]" ><br/><input type="file" name="file[]" ><br/><input type="file" name="file[]" ><br/>
+		<p><input type="submit" name="submit" id="submit" value="send"></p>
+
+</td></tr>
+
+		
+
+</table>
+</form>
+
+</body>
+</html>
